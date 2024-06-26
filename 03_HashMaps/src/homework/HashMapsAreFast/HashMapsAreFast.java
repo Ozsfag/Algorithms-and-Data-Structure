@@ -1,36 +1,58 @@
-package homework.HashMapsAreFast;
+package src.homework.HashMapsAreFast;
+
+import java.util.Arrays;
 
 public class HashMapsAreFast {
     int size = 0;
-    long[] phones = new long[]{};
+    int[] hashes;
+    long[] phones;
     public long[] getUniqueNumbers(long[] inputArray) {
-
-        for (int i = 0; i < inputArray.length; i++){
-            int index = getIndex(inputArray[i]);
-            phones[index] = inputArray[i];
-            size++;
+        phones = new long[1];
+        hashes = new int[inputArray.length];
+        if (inputArray.length == 0) return new long[]{};
+        for (int index = 0; index < inputArray.length; index++){
+            phones = Arrays.copyOf(phones, index + 1);
+            int hash = getHash(inputArray[index]);
+            if (checkHash(hash)) {
+                addHash(hash, index);
+                phones[index] = inputArray[index];
+                size++;
+            }
         }
 
-        return phones; // please implement
+        return getResult(phones); // please implement
     }
-    private int getIndex(long key){
+    private int getHash(long key){
         String num = Long.toString(key);
         int hash = 0;
         for (int i = 0; i < num.length(); i++){
-            hash += (int) (i * num.charAt(i) ^ i) % ;
+            hash += num.charAt(i);
         }
+        return hash;
+    }
 
-        int index;
-        if (size == 0) index = hash;
-        else index = hash % size;
+    private boolean checkHash(int hash){
+        for (int j : hashes)
+            if (j == hash) {
+                return false;
+            }
+        return true;
+    }
 
-        if (phones[index] == key) return index;
+    private void addHash(int hash, int index){
+        hashes[index] = hash;
+    }
 
-        for (int i = 0; i < size; i++){
-            int probIndex = (index + i) % size;
-            if (phones[probIndex] == key) return probIndex;
+    private long[] getResult(long[] phones){
+        for (int i = 0; i < phones.length; i++){
+            for (int j = i + 1; j < phones.length; j++){
+                if (phones[i] == 0){
+                    phones[i] = phones[j];
+                    phones[j] = 0;
+                }
+            }
         }
-        return -1;
+        return Arrays.copyOf(phones, size);
     }
 
 
