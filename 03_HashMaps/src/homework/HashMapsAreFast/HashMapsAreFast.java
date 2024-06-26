@@ -1,6 +1,7 @@
 package src.homework.HashMapsAreFast;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class HashMapsAreFast {
     int size = 0;
@@ -58,6 +59,13 @@ public class HashMapsAreFast {
 
 
     public boolean isThereTwoNumbers(int[] numbers, int X) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int n : numbers){
+            map.put(n, X);
+        }
+        for (Integer i : map.keySet()){
+            if (map.containsKey(X - i)) return true;
+        }
         return false; // please implement
     }
 }

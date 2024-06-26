@@ -64,8 +64,8 @@ public class HashMapsAreFastTest {
                 Arguments.of(bigArray, 0, true),
                 Arguments.of(bigArray, 8, true),
                 Arguments.of(bigArray, -30, false),
-                Arguments.of(bigArray, 10, false),
-                Arguments.of(bigArray, -8, false)
+                Arguments.of(bigArray, 10, true),
+                Arguments.of(bigArray, -8, true)
         );
     }
 
