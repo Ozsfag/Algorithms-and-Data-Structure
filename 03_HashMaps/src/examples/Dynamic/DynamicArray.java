@@ -1,9 +1,11 @@
 package examples.Dynamic;
 
+import java.util.Arrays;
+
 public class DynamicArray {
-    int[] values = new int[8];
-    int size = 8;
-    int currentIndex = 0;
+    public int[] values = new int[8];
+    public int size = 8;
+    public int currentIndex = 0;
 
     public void add(int value) {
         values[currentIndex] = value;
@@ -20,5 +22,14 @@ public class DynamicArray {
         }
         values = newValues;
         size = newSize;
+    }
+
+    @Override
+    public String toString() {
+        return "DynamicArray{" +
+                "values=" + Arrays.toString(values) +
+                ", size=" + size +
+                ", currentIndex=" + currentIndex +
+                '}';
     }
 }
