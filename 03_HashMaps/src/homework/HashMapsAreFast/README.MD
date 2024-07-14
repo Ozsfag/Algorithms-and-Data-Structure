@@ -21,19 +21,19 @@
 Массив номеров:
 
 ```java
-{2223L, 102L, 2223L, 102L, 4589L, 6803L, 102L}
+//{2223L, 102L, 2223L, 102L, 4589L, 6803L, 102L}
 ```
 
 Массив уникальных номеров:
 
 ```java
-{2223L, 102L, 4589L, 6803L}
+//{2223L, 102L, 4589L, 6803L}
 ```
 
 Реализовать метод:
 
 ```java
-public long[] getUniqueNumbers(long[] inputArray)
+public long[] getUniqueNumbers(long[] inputArray);
 ```
 
 ### 2. Сумма чисел
@@ -45,7 +45,7 @@ public long[] getUniqueNumbers(long[] inputArray)
 Верните true если такие два числа в массиве есть 
 
 ```java
-public boolean isThereTwoNumbers(int[] numbers, int X) {...}
+//public boolean isThereTwoNumbers(int[] numbers, int X) {...}
 ``` 
 	
 Самым простейшим решением этой задачи — является вложенный цикл. 
