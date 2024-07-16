@@ -25,11 +25,19 @@ public class DynamicHashMap extends HashMap {
     }
 
     public String[] getAllKeys() {
-        return new String[]{}; // please implement
+        String[] keys = new String[super.numberOfElements];
+        for (int i = 0; i < numberOfElements; i++){
+            keys[i] = entries[i].key;
+        }
+        return keys; // please implement
     }
 
     public String[] getAllValues() {
-        return new String[]{}; // please implement
+        String[] values = new String[super.numberOfElements];
+        for(int i = 0; i < numberOfElements; i++){
+            values[i] = entries[i].value;
+        }
+        return values; // please implement
     }
 
     @Override
