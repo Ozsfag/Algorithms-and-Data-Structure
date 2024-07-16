@@ -5,28 +5,24 @@ import examples.Dynamic.DynamicArray;
 import java.util.Arrays;
 
 public class VeryDynamicArray extends DynamicArray {
-    int[] values = super.values;
-    int size;
 
     public void deleteElementAt(int index) {
-        int end = values.length - 1;
-        for (int i = index; i < end; i++){
-            values[i] = values[i + 1];
+        for (int i = index; i < super.values.length - 1; i++){
+            super.values[i] = super.values[i + 1];
         }
-
-        super.size--;
-
-        if (getSize() / 4 >= super.size) decreaseResize();
-    }
-    private int getSize() {
-        for (int val : values){
-            if (val != 0) size++;
-        }
-        return size;
+        super.values[super.values.length - 1] = 0;
+        decreaseResize();
     }
 
     public void decreaseResize(){
-            super.values = Arrays.copyOf(super.values, super.size);
-            super.currentIndex = super.size;
+        int currenSize = 0;
+        for (int val : super.values){
+            if (val != 0) currenSize += 1;
+        }
+        if ((super.size / 4) >= currenSize){
+            super.values = Arrays.copyOf(super.values, super.size / 2);
+            super.size = super.values.length;
+            super.currentIndex = super.size - 1;
+        }
     }
 }

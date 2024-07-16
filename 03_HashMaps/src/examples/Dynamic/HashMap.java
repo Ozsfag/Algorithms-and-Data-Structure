@@ -1,7 +1,7 @@
 package examples.Dynamic;
 
 public class HashMap {
-    class KeyValuePair {
+    public class KeyValuePair {
         public String key;
         public String value;
 
@@ -11,13 +11,16 @@ public class HashMap {
         }
     }
 
-    KeyValuePair[] entries = new KeyValuePair[8];
-    int size = 8;
-    int numberOfElements = 0;
+    public KeyValuePair[] entries = new KeyValuePair[8];
+    public int size = 8;
+    public int numberOfElements = 0;
 
     int hashFunction(String key) {
-        //
-        return 0;
+        int hash = 0;
+        for (int i = 0; i < key.length(); i++){
+            hash += key.charAt(i);
+        }
+        return hash;
     }
 
     public void add(String key, String value) {
@@ -35,7 +38,10 @@ public class HashMap {
         // Скопировать 8 элементов из старого массива
 
         for (int i = 0; i < size; i++) {
+
+            if (entries[i] == null) break;
             KeyValuePair entry = entries[i];
+
             int index = findGoodIndex(entry.key);
             newEntries[index] = entry;
         }
