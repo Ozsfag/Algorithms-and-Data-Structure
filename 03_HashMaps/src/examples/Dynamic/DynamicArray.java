@@ -13,6 +13,9 @@ public class DynamicArray {
         if (currentIndex == size) {
             resize(size * 2);
         }
+//        if (currentIndex < size / 4) {
+//            resize(size / 2);
+//        }
     }
 
     public void resize(int newSize) {

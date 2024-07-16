@@ -21,8 +21,8 @@ public class VeryDynamicArray extends DynamicArray {
         }
         if ((super.size / 4) >= currenSize){
             super.values = Arrays.copyOf(super.values, super.size / 2);
-            super.size = super.values.length;
-            super.currentIndex = super.size - 1;
         }
+        super.size = super.values.length;
+        super.currentIndex = currenSize;
     }
 }
