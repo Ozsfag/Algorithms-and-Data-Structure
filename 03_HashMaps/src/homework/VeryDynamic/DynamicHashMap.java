@@ -2,8 +2,25 @@ package homework.VeryDynamic;
 
 import examples.Dynamic.HashMap;
 
+import java.util.Objects;
+
 public class DynamicHashMap extends HashMap {
+
     public void deleteKey(String key) {
+        for (int j = 0; j < super.numberOfElements; j++) {
+            if(super.entries[j].key.equals(key)) {
+                for (int i = j; i < super.entries.length - 1; i++){
+                    super.entries[i] = super.entries[i + 1];
+                }
+                super.numberOfElements--;
+            }
+        }
+
+        if (super.numberOfElements <= super.size / 4) {
+            super.size /= 2;
+            resize(super.size);
+        }
+
         // please implement
     }
 
@@ -13,5 +30,15 @@ public class DynamicHashMap extends HashMap {
 
     public String[] getAllValues() {
         return new String[]{}; // please implement
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        for (HashMap.KeyValuePair entry : super.entries){
+            if (Objects.isNull(entry)) continue;
+            result.append("key - ").append(entry.key).append("; ").append("value - ").append(entry.value).append("\n").append(" ");
+        }
+        return result.toString();
     }
 }
