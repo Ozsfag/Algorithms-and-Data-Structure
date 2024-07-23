@@ -44,7 +44,8 @@ public class List {
 
     // Returns number of elements in list
     public int getSize() {
-        int count = 0;
+        if (this.begin == null) return 0;
+        int count = 1;
         Node start = this.begin;
         while(begin.next != null) {
             begin = begin.next;
@@ -58,12 +59,10 @@ public class List {
     // This function converts our list to an array. New array is created with values the same as in list.
     public int[] toArray() {
         int[] arr = new int[getSize()];
-        int index = 0;
         Node start = begin;
-        while(begin.next != null) {
-            arr[index] = begin.x;
+        for(int i = 0; i < arr.length; i++) {
+            arr[i] = begin.x;
             begin = begin.next;
-            index++;
         }
         begin = start;
         /* TODO IMPLEMENT THIS */
