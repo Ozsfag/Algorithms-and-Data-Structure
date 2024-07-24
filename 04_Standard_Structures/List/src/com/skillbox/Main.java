@@ -1,6 +1,5 @@
 package com.skillbox;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
@@ -111,11 +110,9 @@ public class Main {
         MyAssert(Arrays.equals(l.toArray(), ans2));
     }
     public static void main(String[] args) {
-        int[] t1 = {1, 2, 5, 1, 2, 6, 1, 6, 8, 324, -10, 20};
-        int[] list = List.fromArray(t1).toArray();
-//        testToArray();
-//        testSize();
-//        testEverySecond();
+        testToArray();
+        testSize();
+        testEverySecond();
 //        testFilterX();
 //        testGetAndInsert();
         System.out.println("All tests for List passed successfully! Congrats");

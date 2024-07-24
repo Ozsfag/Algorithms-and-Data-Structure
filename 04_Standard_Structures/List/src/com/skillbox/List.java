@@ -38,8 +38,21 @@ public class List {
     // This function should return copy of the list where every second element is removed. Initial list should not be changed.
     // E.g. if we run copyEverySecond on list [1, 2, 3, 4, 5, 6, 7, 100, 120, 162, 0, 1] new list with values [1, 3, 5, 7, 120, 0] should be returned.
     public List copyEverySecond() {
+        List list = new List();
+        Node start = this.begin;
+        int count = 0;
+        while(this.begin.next != null){
+            if(count % 2 == 0){
+                Node node = new Node(this.begin.x);
+                node.next = list.begin;
+                list.begin = node;
+            }
+            this.begin = this.begin.next;
+            count++;
+        }
+        this.begin = start;
         /* TODO IMPLEMENT THIS */
-        return new List();
+        return list;
     }
 
     // Returns number of elements in list
@@ -102,5 +115,4 @@ public class List {
         }
         return l;
     }
-
 }
