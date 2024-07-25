@@ -60,7 +60,6 @@ public class List {
         } else list.begin = this.begin;
 
         return revertList(list, start);
-        /* TODO IMPLEMENT THIS */
     }
     private List revertList(List list, Node start){
         List result = new List();
@@ -122,13 +121,19 @@ public class List {
     // O(N) time is expected.
     public void filterDivisible(int x) {
         Node start = this.begin;
-        while(this.begin.next != null){
-            if (this.begin.x % 2 ==0) {
-                Node node = new Node(this.begin.x);
-                node.next = this.begin;
-                this.begin = node;
+        List divisible = new List();
+        if (this.begin.next != null) {
+            while (this.begin.next != null) {
+                if (this.begin.x % 2 != 0) {
+                    Node node = new Node(this.begin.x);
+                    node.next = divisible.begin;
+                    divisible.begin = node;
+                }
+                this.begin = this.begin.next;
             }
-        }
+        } else divisible.begin = this.begin;
+
+        this.begin = revertList(divisible, start).begin;
         /* TODO IMPLEMENT THIS */
     }
 
