@@ -113,7 +113,7 @@ public class Main {
         testToArray();
         testSize();
         testEverySecond();
-//        testFilterX();
+        testFilterX();
 //        testGetAndInsert();
         System.out.println("All tests for List passed successfully! Congrats");
     }

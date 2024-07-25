@@ -16,8 +16,8 @@ public class List {
     // Adds element to the beginning of the list
     public void push_front(int x) {
         Node node = new Node(x);
-        node.next = begin;
-        begin = node;
+        node.next = this.begin;
+        this.begin = node;
         /* TODO IMPLEMENT THIS */
     }
 
@@ -40,19 +40,42 @@ public class List {
     public List copyEverySecond() {
         List list = new List();
         Node start = this.begin;
-        int count = 0;
-        while(this.begin.next != null){
-            if(count % 2 == 0){
+        int index = 0;
+        if (this.begin.next != null) {
+            while (this.begin.next != null) {
+                if (index % 2 == 0) {
+                    Node node = new Node(this.begin.x);
+                    node.next = list.begin;
+                    list.begin = node;
+                }
+                this.begin = this.begin.next;
+                index++;
+            }
+            if(index % 2 == 0){
                 Node node = new Node(this.begin.x);
                 node.next = list.begin;
                 list.begin = node;
             }
-            this.begin = this.begin.next;
-            count++;
-        }
-        this.begin = start;
+            this.begin = start;
+        } else list.begin = this.begin;
+
+        return revertList(list, start);
         /* TODO IMPLEMENT THIS */
-        return list;
+    }
+    private List revertList(List list, Node start){
+        List result = new List();
+        Node listStart = list.begin;
+        while(list.begin.next != null){
+            Node node = new Node(list.begin.x);
+            node.next = result.begin;
+            result.begin = node;
+            list.begin = list.begin.next;
+        }
+        Node node = new Node(list.begin.x);
+        node.next = result.begin;
+        result.begin = node;
+        this.begin = start;
+        return result;
     }
 
     // Returns number of elements in list
@@ -98,6 +121,14 @@ public class List {
     // E.g. list {1, 2, 3, 4, 4, 10, 7}  after filterDivisible(2) would look like {1, 3, 7}.
     // O(N) time is expected.
     public void filterDivisible(int x) {
+        Node start = this.begin;
+        while(this.begin.next != null){
+            if (this.begin.x % 2 ==0) {
+                Node node = new Node(this.begin.x);
+                node.next = this.begin;
+                this.begin = node;
+            }
+        }
         /* TODO IMPLEMENT THIS */
     }
 
