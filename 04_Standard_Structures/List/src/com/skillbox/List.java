@@ -64,6 +64,7 @@ public class List {
     private List revertList(List list, Node start){
         List result = new List();
         Node listStart = list.begin;
+        if (list.begin == null) return result;
         while(list.begin.next != null){
             Node node = new Node(list.begin.x);
             node.next = result.begin;
@@ -124,17 +125,20 @@ public class List {
         List divisible = new List();
         if (this.begin.next != null) {
             while (this.begin.next != null) {
-                if (this.begin.x % 2 != 0) {
+                if (this.begin.x % x != 0) {
                     Node node = new Node(this.begin.x);
                     node.next = divisible.begin;
                     divisible.begin = node;
                 }
                 this.begin = this.begin.next;
             }
+            if( this.begin.x % x != 0){
+                Node node = new Node(this.begin.x);
+                node.next = divisible.begin;
+                divisible.begin = node;
+            }
         } else divisible.begin = this.begin;
-
         this.begin = revertList(divisible, start).begin;
-        /* TODO IMPLEMENT THIS */
     }
 
     // This function returns Node from the list by index. O(N) time is expected.
