@@ -18,7 +18,6 @@ public class List {
         Node node = new Node(x);
         node.next = this.begin;
         this.begin = node;
-        /* TODO IMPLEMENT THIS */
     }
 
     public List() {
@@ -88,14 +87,12 @@ public class List {
             count++;
         }
         begin = start;
-        /* TODO IMPLEMENT THIS */
         return count;
     }
 
     // This function converts our list to an array. New array is created with values the same as in list.
     public int[] toArray() {
         int[] arr = new int[getSize()];
-        Node start = begin;
         for(int i = 0; i < arr.length; i++) {
             arr[i] = begin.x;
             begin = begin.next;
@@ -143,17 +140,21 @@ public class List {
 
     // This function returns Node from the list by index. O(N) time is expected.
     public Node getAt(int index) {
-        if (index == 0) return this.begin;
+//        if (index == 0) return this.begin;
         Node start = this.begin;
-        int count = 1;
+        int count = 0;
         while(this.begin.next != null){
-            if (count == index) return this.begin.next;
+            if (count == index) {
+                Node res = this.begin;
+                this.begin = start;
+                return res;
+            }
             this.begin = this.begin.next;
             count++;
         }
-
+        Node res = this.begin;
         this.begin = start;
-        return null;
+        return res;
     }
 
     // This function creates List from an array
