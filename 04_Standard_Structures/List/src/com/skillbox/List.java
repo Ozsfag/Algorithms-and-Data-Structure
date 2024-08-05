@@ -100,8 +100,6 @@ public class List {
             arr[i] = begin.x;
             begin = begin.next;
         }
-        begin = start;
-        /* TODO IMPLEMENT THIS */
         return arr;
     }
 
@@ -114,7 +112,9 @@ public class List {
     // This function inserts new element with value val right after the element x.
     // O(1) time is expected
     public void insertAfter(Node x, int val) {
-        /* TODO IMPLEMENT THIS */
+        Node newNode = new Node(val);
+        newNode.next = x.next;
+        x.next = newNode;
     }
 
     // This function removes all elements from the list that are divisible by x.
@@ -143,7 +143,16 @@ public class List {
 
     // This function returns Node from the list by index. O(N) time is expected.
     public Node getAt(int index) {
-        /* TODO IMPLEMENT THIS */
+        if (index == 0) return this.begin;
+        Node start = this.begin;
+        int count = 1;
+        while(this.begin.next != null){
+            if (count == index) return this.begin.next;
+            this.begin = this.begin.next;
+            count++;
+        }
+
+        this.begin = start;
         return null;
     }
 

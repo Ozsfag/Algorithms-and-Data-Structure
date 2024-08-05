@@ -114,7 +114,7 @@ public class Main {
         testSize();
         testEverySecond();
         testFilterX();
-//        testGetAndInsert();
+        testGetAndInsert();
         System.out.println("All tests for List passed successfully! Congrats");
     }
 }
