@@ -18,9 +18,7 @@ public class Stack {
   // It creates new long array and copies all the elements there.
   public void reallocate() {
     long[] newArr = new long[a.length * 2];
-    for (int i = 0; i < a.length; i++) {
-      newArr[i] = a[i];
-    }
+      System.arraycopy(a, 0, newArr, 0, a.length);
     a = newArr;
     /* IMPLEMENT THIS */
   }
@@ -43,7 +41,7 @@ public class Stack {
 
   // Removes last element from the stack and returns its value
   public long pop_back() {
-    int index = getSize() - 1;
+    int index = getSize() > 0 ?  getSize() - 1 : 0;
     long last = a[index];
     a[index] = 0;
     if (size > 0) {
@@ -68,31 +66,31 @@ public class Stack {
   public static long calcPolish(String s) {
     Stack stack = new Stack();
     String[] charSeq = s.trim().split(" ");
-    for (int i = 0; i < charSeq.length; i++) {
-      if (isDigit(charSeq[i])) {
-        long num = Long.parseLong(charSeq[i]);
-        stack.push_back(num);
-      } else {
-        if (charSeq[i].equals("+")) {
-          long first = stack.pop_back();
-          long second = stack.pop_back();
-          long result = first + second;
-          stack.push_back(result);
-        }
-        if (charSeq[i].equals("*")) {
-          long first = stack.pop_back();
-          long second = stack.pop_back();
-          long result = first * second;
-          stack.push_back(result);
-        }
-        if (charSeq[i].equals("-")) {
-          long first = stack.pop_back();
-          long second = stack.pop_back();
-          long result = second - first;
-          stack.push_back(result);
-        }
+      for (String string : charSeq) {
+          if (isDigit(string)) {
+              long num = Long.parseLong(string);
+              stack.push_back(num);
+          } else {
+              if (string.equals("+")) {
+                  long first = stack.pop_back();
+                  long second = stack.pop_back();
+                  long result = first + second;
+                  stack.push_back(result);
+              }
+              if (string.equals("*")) {
+                  long first = stack.pop_back();
+                  long second = stack.pop_back();
+                  long result = first * second;
+                  stack.push_back(result);
+              }
+              if (string.equals("-")) {
+                  long first = stack.pop_back();
+                  long second = stack.pop_back();
+                  long result = second - first;
+                  stack.push_back(result);
+              }
+          }
       }
-    }
     if (stack.getSize() == 1) {
       return stack.top();
     }
