@@ -5,38 +5,38 @@ import java.util.List;
 
 class Example {
 
-    /*
-        Запустите Benchmark чтобы посмотреть сколько времени занимает выполнение этого кода
-    */
-    static List<Long> findUnique(long[] phoneNumbers) {
-        // Заведем список уникальных номеров, "Блокнотик"
-        List<Long> uniqueNumbers = new ArrayList<>();
+  /*
+      Запустите Benchmark чтобы посмотреть сколько времени занимает выполнение этого кода
+  */
+  static List<Long> findUnique(long[] phoneNumbers) {
+    // Заведем список уникальных номеров, "Блокнотик"
+    List<Long> uniqueNumbers = new ArrayList<>();
 
-        // Пройдемся циклом по нашим номерам
-        for (long currentNumber : phoneNumbers) {
+    // Пройдемся циклом по нашим номерам
+    for (long currentNumber : phoneNumbers) {
 
-            // Проверим есть ли уже этот номер в "Блокнотике"
-            boolean alreadyExists = false;
-            for (Long existingNumber : uniqueNumbers) {
-                if (currentNumber == existingNumber) {
-                    alreadyExists = true;
-                    break;
-                }
-            }
-
-            // Если его там нет — то добавим
-            if (!alreadyExists) {
-                uniqueNumbers.add(currentNumber);
-            }
+      // Проверим есть ли уже этот номер в "Блокнотике"
+      boolean alreadyExists = false;
+      for (Long existingNumber : uniqueNumbers) {
+        if (currentNumber == existingNumber) {
+          alreadyExists = true;
+          break;
         }
-        return uniqueNumbers;
-    }
+      }
 
-    public static void main(String[] args) {
-        long[] phoneNumbers = new long[]{+79161002030L, +79255558877L, +79219990000L, +79161002030L};
-        List<Long> uniqueNumbers = findUnique(phoneNumbers);
-        System.out.println("Unique numbers: " + uniqueNumbers);
+      // Если его там нет — то добавим
+      if (!alreadyExists) {
+        uniqueNumbers.add(currentNumber);
+      }
     }
+    return uniqueNumbers;
+  }
+
+  public static void main(String[] args) {
+    long[] phoneNumbers = new long[] {+79161002030L, +79255558877L, +79219990000L, +79161002030L};
+    List<Long> uniqueNumbers = findUnique(phoneNumbers);
+    System.out.println("Unique numbers: " + uniqueNumbers);
+  }
 }
 
 /*
@@ -52,7 +52,6 @@ class Example {
     Как бы изменилось время выполнения этого кода?
 
 */
-
 
 /*
  * 1. В этом примере мы используем ArrayList а не обычный массив long[],

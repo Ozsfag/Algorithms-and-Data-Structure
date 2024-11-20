@@ -7,8 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Algoritms (3)" />
-        <module name="Algoritms (2)" />
         <module name="Algoritms (1)" />
+      </profile>
+      <profile name="Annotation profile for Skillbox Algorithms" enabled="true">
+        <sourceOutputDir name="../01_Arrays/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../01_Arrays/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="Algoritms (2)" />
       </profile>
     </annotationProcessing>
   </component>
